@@ -7,9 +7,14 @@ app = Flask(__name__)
 def index():
     if request.method == "POST":
         query = request.form["query"]
-        hd = Hdhub4u()
-        search = hd.search(query)
-        movies = hd.movies
+        try:
+        	hd = Hdhub4u()
+        	search = hd.search(query)
+        	movies = hd.movies
+        except Exception as e:
+        	print(e)
+        	movies = {f"Nothing Matching  : {query}":"#"}
+
         return render_template("results.html", movies=movies)
 
     return render_template("index.html")
