@@ -1,0 +1,7 @@
+{% for name, url in movies.items() %}
+<div class="movie">
+  <a href="{{ url }}">{{name}}</a>
+</div>
+{% endfor %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
